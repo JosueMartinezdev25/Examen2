@@ -3,12 +3,10 @@
 <html lang="es"> 
 <head> 
     <meta charset="utf-8" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit
-=no" /> 
-    <title>Iniciar Sesión</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> 
+    <title>Iniciar Sesion</title> 
     <link href="{{ asset('sb-admin/css/styles.css') }}" rel="stylesheet" /> 
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="
-anonymous"></script> 
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script> 
 </head> 
 <body class="bg-primary"> 
     <div id="layoutAuthentication"> 
@@ -17,7 +15,7 @@ anonymous"></script>
                 <div class="container"> 
                     <div class="row justify-content-center"> 
                         <div class="col-lg-5"> 
-                            <div class="card shadow-lg border-0 rounded-lg mt-5"> 
+                             <div class="card shadow-lg border-0 rounded-lg mt-5"> 
                                 <div class="card-header bg-dark text-white text-center py-4"> 
                                     <h3 class="font-weight-light my-2"> 
                                         <i class="fas fa-hammer text-warning me-2"></i>AgroValle
@@ -43,14 +41,14 @@ anonymous"></script>
                                         @csrf 
                                         <div class="form-floating mb-3"> 
                                             <input class="form-control" id="inputEmail" type="email" name="email" value="{{ old('email') }}" placeholder="admin@labendicion.hn" required autofocus /> 
-                                            <label for="inputEmail"><i class="fas faenvelope me-1"></i>Correo Electrónico</label> 
+                                            <label for="inputEmail"><i class="fas faenvelope me-1"></i>Correo Electronico</label> 
                                         </div> 
                                         <div class="form-floating mb-3"> 
                                             <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Contraseña" required /> 
                                             <label for="inputPassword"><i class="fas fa-lock me-1"></i>Contraseña</label> 
                                         </div> 
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0"> 
-                                            <span class="small text-muted">Demo: <strong>@agrovalle.hn</strong></span> 
+                                            <span class="small text-muted">Ingresa con tu correo institucional: <strong>@agrovalle.hn</strong></span> 
                                             <button type="submit" class="btn btn-primary px-4"> 
                                                 <i class="fas fa-sign-in-alt me-1"></i>Ingresar 
                                             </button> 

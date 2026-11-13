@@ -15,16 +15,27 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             
-            <a class="navbar-brand ps-3" href="/insumos">Agropecuaria Agrovalle</a>
+            <a class="navbar-brand ps-3" href="/dashboard">Agropecuaria Agrovalle</a>
             
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            
+            <form action="{{ route('logout') }}" method="POST" class="ms-auto me-3">
+                @csrf
+                <button type="submit" class="btn btn-outline-light btn-sm">
+                <i class="fas fa-sign-out-alt me-1"></i> Cerrar sesión
+                </button>
+            </form>
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
+
+                        <div class="sb-sidenav-menu-heading">Principal</div>
+                        <a class="nav-link" href="{{ route('dashboard') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-boxes-stacked"></i></div>
+                            Dashboard
+                        </a>
 
                            <div class="sb-sidenav-menu-heading">Inventario</div>
                         <a class="nav-link" href="{{ route('insumos.index') }}">

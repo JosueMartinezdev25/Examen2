@@ -41,7 +41,7 @@ class EmpleadosController extends Controller
         'fecha_ingreso' => 'required|date',
         ]);
 
-        Empleado::create($request->all());
+        Empleados::create($request->all());
 
         return redirect()
             ->route('empleados.index')
@@ -61,7 +61,7 @@ class EmpleadosController extends Controller
      */
     public function edit(Empleados $empleados)
     {
-        return view('empleados.edit',compact('empleado'));
+        return view('empleados.edit',compact('empleados'));
     }
 
     /**
@@ -70,7 +70,7 @@ class EmpleadosController extends Controller
     public function update(Request $request, Empleados $empleados)
     {
     $request->validate([
-        'identidad'     => 'required|digits:13|unique:empleados,identidad' . $empleado->id,
+        'identidad'     => 'required|digits:13|unique:empleados,identidad,' . $empleados->id,
         'nombre'        => 'required|string|max:255',
         'apellido'      => 'required|string|max:255',
         'correo'        => 'required|email|max:255',

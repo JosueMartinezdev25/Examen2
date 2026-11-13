@@ -57,8 +57,8 @@
                     <label class="form-label fw-bold">Cargo <span class="text-danger">*</span></label>
                     <select name="cargo" class="form-select @error('cargo') is-invalid @enderror">
                         <option value="">-- Seleccione un Cargo --</option>
-                        <option value="Ingeniero Agrónomo" {{ old('cargo') == 'Ingeniero Agrónomo' ? 'selected' : '' }}>Ingeniero Agrónomo</option>
-                        <option value="Asesor Técnico de Campo" {{ old('cargo') == 'Asesor Técnico de Campo' ? 'selected' : '' }}>Asesor Técnico de Campo</option>
+                        <option value="Ingeniero Agronomo" {{ old('cargo') == 'Ingeniero Agronomo' ? 'selected' : '' }}>Ingeniero Agronomo</option>
+                        <option value="Asesor Tecnico de Campo" {{ old('cargo') == 'Asesor Técnico de Campo' ? 'selected' : '' }}>Asesor Tecnico de Campo</option>
                         <option value="Jefe de Bodega Central" {{ old('cargo') == 'Jefe de Bodega Central' ? 'selected' : '' }}>Jefe de Bodega Central</option>
                         <option value="Operador de Maquinaria" {{ old('cargo') == 'Operador de Maquinaria' ? 'selected' : '' }}>Operador de Maquinaria</option>
                         <option value="Cajero" {{ old('cargo') == 'Cajero' ? 'selected' : '' }}>Cajero</option>

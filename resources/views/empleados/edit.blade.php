@@ -5,7 +5,7 @@
 @section('contenido')
 <div class="mb-3">
     <h1 class="h3 text-gray-800 mb-0">✏️ Editar Expediente del Empleado</h1>
-    <small class="text-muted">Modificando registro de: <strong>{{ $empleado->nombre }} {{ $empleado->apellido }}</strong> (DNI: {{ $empleado->identidad }})</small>
+    <small class="text-muted">Modificando registro de: <strong>{{ $empleados->nombre }} {{ $empleados->apellido }}</strong> (DNI: {{ $empleados->identidad }})</small>
 </div>
 
 <div class="card shadow-sm border-0 col-lg-8">
@@ -13,14 +13,14 @@
         <h6 class="m-0 font-weight-bold"><i class="fas fa-user-edit me-2"></i>Actualizar Datos Contractuales</h6>
     </div>
     <div class="card-body p-4">
-        <form action="{{ route('empleados.update', $empleado) }}" method="POST">
+        <form action="{{ route('empleados.update', $empleados) }}" method="POST">
             @csrf
             @method('PUT')
 
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label fw-bold">DNI (13 dígitos, sin guiones) <span class="text-danger">*</span></label>
-                    <input type="text" maxlength="13" name="identidad" class="form-control @error('identidad') is-invalid @enderror" value="{{ old('identidad', $empleado->identidad) }}">
+                    <input type="text" maxlength="13" name="identidad" class="form-control @error('identidad') is-invalid @enderror" value="{{ old('identidad', $empleados->identidad) }}">
                     @error('identidad')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -28,7 +28,7 @@
 
                 <div class="col-md-6 mb-3">
                     <label class="form-label fw-bold">Correo <span class="text-danger">*</span></label>
-                    <input type="email" name="correo" class="form-control @error('correo') is-invalid @enderror" value="{{ old('correo', $empleado->correo) }}">
+                    <input type="email" name="correo" class="form-control @error('correo') is-invalid @enderror" value="{{ old('correo', $empleados->correo) }}">
                     @error('correo')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label fw-bold">Nombre <span class="text-danger">*</span></label>
-                    <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre', $empleado->nombre) }}">
+                    <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre', $empleados->nombre) }}">
                     @error('nombre')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -46,7 +46,7 @@
 
                 <div class="col-md-6 mb-3">
                     <label class="form-label fw-bold">Apellido <span class="text-danger">*</span></label>
-                    <input type="text" name="apellido" class="form-control @error('apellido') is-invalid @enderror" value="{{ old('apellido', $empleado->apellido) }}">
+                    <input type="text" name="apellido" class="form-control @error('apellido') is-invalid @enderror" value="{{ old('apellido', $empleados->apellido) }}">
                     @error('apellido')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -56,10 +56,10 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label fw-bold">Cargo <span class="text-danger">*</span></label>
-                    @php $c = old('cargo', $empleado->cargo); @endphp
+                    @php $c = old('cargo', $empleados->cargo); @endphp
                     <select name="cargo" class="form-select @error('cargo') is-invalid @enderror">
-                        <option value="Ingeniero Agrónomo" {{ $c == 'Ingeniero Agrónomo' ? 'selected' : '' }}>Ingeniero Agronomo</option>
-                        <option value="Asesor Técnico de Campo" {{ $c == 'Asesor Técnico de Campo' ? 'selected' : '' }}>Asesor Tecnico de Campo</option>
+                        <option value="Ingeniero Agronomo" {{ $c == 'Ingeniero Agronomo' ? 'selected' : '' }}>Ingeniero Agronomo</option>
+                        <option value="Asesor Tecnico de Campo" {{ $c == 'Asesor Tecnico de Campo' ? 'selected' : '' }}>Asesor Tecnico de Campo</option>
                         <option value="Jefe de Bodega Central" {{ $c == 'Jefe de Bodega Central' ? 'selected' : '' }}>Jefe de Bodega Central</option>
                         <option value="Operador de Maquinaria" {{ $c == 'Operador de Maquinaria' ? 'selected' : '' }}>Operador de Maquinaria</option>
                         <option value="Cajero" {{ $c == 'Cajero' ? 'selected' : '' }}>Cajero</option>
@@ -73,7 +73,7 @@
                     <label class="form-label fw-bold">Salario Mensual (Lempiras) <span class="text-danger">*</span></label>
                     <div class="input-group">
                         <span class="input-group-text">L.</span>
-                        <input type="number" step="0.01" min="0.01" name="salario" class="form-control @error('salario') is-invalid @enderror" value="{{ old('salario', $empleado->salario) }}">
+                        <input type="number" step="0.01" min="0.01" name="salario" class="form-control @error('salario') is-invalid @enderror" value="{{ old('salario', $empleados->salario) }}">
                         @error('salario')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -84,7 +84,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label fw-bold">Fecha de Ingreso <span class="text-danger">*</span></label>
-                    <input type="date" name="fecha_ingreso" class="form-control @error('fecha_ingreso') is-invalid @enderror" value="{{ old('fecha_ingreso', $empleado->fecha_ingreso) }}">
+                    <input type="date" name="fecha_ingreso" class="form-control @error('fecha_ingreso') is-invalid @enderror" value="{{ old('fecha_ingreso', $empleados->fecha_ingreso) }}">
                     @error('fecha_ingreso')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -93,8 +93,8 @@
                 <div class="col-md-6 mb-3">
                     <label class="form-label fw-bold">Estado <span class="text-danger">*</span></label>
                     <select name="estado" class="form-select @error('estado') is-invalid @enderror">
-                        <option value="1" {{ old('estado', $empleado->estado) == 1 ? 'selected' : '' }}>Activo</option>
-                        <option value="0" {{ old('estado', $empleado->estado) == 0 ? 'selected' : '' }}>Inactivo</option>
+                        <option value="1" {{ old('estado', $empleados->estado) == 1 ? 'selected' : '' }}>Activo</option>
+                        <option value="0" {{ old('estado', $empleados->estado) == 0 ? 'selected' : '' }}>Inactivo</option>
                     </select>
                     @error('estado')
                         <div class="invalid-feedback">{{ $message }}</div>
