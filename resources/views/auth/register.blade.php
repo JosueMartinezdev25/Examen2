@@ -1,75 +1,79 @@
-<!-- resources/views/auth/register.blade.php --> 
-<!DOCTYPE html> 
-<html lang="es"> 
-<head> 
-    <meta charset="utf-8" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit
-=no" /> 
-    <title>Registro de Personal</title> 
-    <link href="{{ asset('sb-admin/css/styles.css') }}" rel="stylesheet" /> 
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script> 
-</head> 
-<body class="bg-primary"> 
-    <div id="layoutAuthentication"> 
-        <div id="layoutAuthentication_content"> 
-            <main> 
-                <div class="container"> 
-                    <div class="row justify-content-center"> 
-                        <div class="col-lg-7"> 
-                            <div class="card shadow-lg border-0 rounded-lg mt-5"> 
-                                <div class="card-header bg-dark text-white text-center py-4"> 
-                                    <h3 class="font-weight-light my-2"> 
-                                        <i class="fas fa-user-plus text-success me-2"></i>Crear Cuenta de Empleado 
-                                    </h3> 
-                                </div> 
-                                <div class="card-body p-4"> 
-                                    <form action="{{ route('register.post') }}" method="POST"> 
-                                        @csrf 
-                                        <div class="form-floating mb-3"> 
-                                            <input class="form-control @error('name') is-invalid @enderror" id="inputName" type="text" name="name" value="{{ old('name') }}" placeholder="Juan Pérez" required /> 
-                                            <label for="inputName"><i class="fas fa-user me-1"></i>Nombre Completo</label> 
-                                        </div> 
-                                        <div class="form-floating mb-3"> 
-                                            <input class="form-control @error('email') is-invalid @enderror" id="inputEmail" type="email" name="email" value="{{ old('email') }}" placeholder="empleado@labendicion.hn" required /> 
-                                            <label for="inputEmail"><i class="fas faenvelope me-1"></i>Correo Institucional</label> 
-                                        </div> 
-                                        <div class="row mb-3"> 
-                                            <div class="col-md-6"> 
-                                                <div class="form-floating mb-3 mb-md0">
-                                                    <input class="form-control @error('password') is-invalid @enderror" id="inputPassword" type="password" name="password" placeholder="Contraseña" required /> 
-                                                    <label for="inputPassword"><i class="fas fa-lock me-1"></i>Contraseña</label> 
-                                                </div> 
-                                            </div> 
-                                            <div class="col-md-6"> 
-                                                <div class="form-floating mb-3 mb-md0"> 
-                                                    <input class="form-control" id="inputPasswordConfirm" type="password" name="password_confirmation" placeholder="Confirmar" required /> 
-                                                    <label for="inputPasswordConfirm"><i class="fas fa-check-double me-1"></i>Confirmar Clave</label> 
-                                                </div> 
-                                            </div> 
-                                        </div> 
-                                        <div class="mt-4 mb-0"> 
-                                            <div class="d-grid"> 
-                                                <button type="submit" class="btn btnsuccess py-2"> 
-                                                    <i class="fas fa-save me-1"></i>Registrar Cuenta y Acceder 
-                                                </button> 
-                                            </div> 
-                                        </div> 
-                                    </form> 
-                                </div> 
-                                <div class="card-footer text-center py-3 bg-light"> 
-                                    <div class="small"> 
-                                        Ya tienes una cuenta creada?<a href="{{ route('login') }}">Iniciar Sesión</a> 
-                                    </div> 
-                                </div> 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registro | AgroValle</title>
+    <link href="{{ asset('sb-admin/css/styles.css') }}" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-light">
+    <div class="container min-vh-100 d-flex align-items-center justify-content-center py-4">
+        <div class="row justify-content-center w-100">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6">
+                <div class="card shadow border-0 rounded-3 overflow-hidden">
+                    <div class="card-header bg-success text-white text-center py-4 border-0">
+                        <i class="fas fa-user-plus fa-3x mb-3"></i>
+                        <h2 class="fw-bold mb-1">AgroValle</h2>
+                        <small class="text-white-50">REGISTRO DE PERSONAL</small>
+                    </div>
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold text-dark mb-1">Crear cuenta</h4>
+                        <br>
+                        <form action="{{ route('register.post') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="inputName" class="form-label fw-semibold">
+                                    <i class="fas fa-user text-success me-1"></i> Nombre completo
+                                </label>
+                                <input class="form-control @error('name') is-invalid @enderror" id="inputName" type="text" name="name" value="{{ old('name') }}" placeholder="Ej. Juan Perez" required>
+                                @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
-                        </div> 
-                    </div> 
-                </div> 
-            </main> 
-        </div> 
-    </div> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundl
-e.min.js" crossorigin="anonymous"></script> 
-    <script src="{{ asset('sb-admin/js/scripts.js') }}"></script> 
-</body> 
+                            <div class="mb-3">
+                                <label for="inputEmail" class="form-label fw-semibold">
+                                    <i class="fas fa-envelope text-success me-1"></i> Correo institucional
+                                </label>
+                                <input class="form-control @error('email') is-invalid @enderror" id="inputEmail" type="email" name="email" value="{{ old('email') }}" placeholder="empleado@agrovalle.hn" required>
+                                @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="inputPassword" class="form-label fw-semibold">
+                                        <i class="fas fa-lock text-success me-1"></i> Contraseña
+                                    </label>
+                                    <input class="form-control @error('password') is-invalid @enderror" id="inputPassword" type="password" name="password" placeholder="Contrasena" required>
+                                    @error('password')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="inputPasswordConfirm" class="form-label fw-semibold">
+                                        <i class="fas fa-check-double text-success me-1"></i> Confirmar contrasena
+                                    </label>
+                                    <input class="form-control" id="inputPasswordConfirm" type="password" name="password_confirmation" placeholder="Repetir contrasena" required>
+                                </div>
+                            </div>
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-success py-2 fw-semibold">
+                                    <i class="fas fa-user-plus me-2"></i> Registrar cuenta
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center bg-light py-3">
+                        <small class="text-muted">
+                            Ya tienes una cuenta? <a href="{{ route('login') }}" class="text-success fw-bold text-decoration-none">Iniciar sesion</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('sb-admin/js/scripts.js') }}"></script>
+</body>
 </html>
