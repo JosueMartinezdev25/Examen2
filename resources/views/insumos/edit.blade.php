@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label class="form-label">Categoría</label>
+                    <label class="form-label">Categoria</label>
                     <select name="categoria" class="form-select" required>
                         <option value="">Seleccione...</option>
                         <option value="Fertilizantes" {{ old('categoria', $insumos->categoria) == 'Fertilizantes' ? 'selected' : '' }}>Fertilizantes</option>

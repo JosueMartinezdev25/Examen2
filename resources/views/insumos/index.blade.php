@@ -42,7 +42,7 @@
                         <th class="text-center">Foto</th>
                         <th>Codigo</th>
                         <th>Nombre</th>
-                        <th>Categoría</th>
+                        <th>Categoria</th>
                         <th class="text-end">Precio</th>
                         <th class="text-center">Existencias</th>
                         <th class="text-center" style="width: 150px;">Acciones</th>
@@ -66,11 +66,11 @@
                         <td class="text-center">
                             <strong>{{ $insumo->inventario }}</strong>
                             @if ($insumo->inventario > 20)
-                                <span class="badge bg-success">Óptimo</span>
+                                <span class="badge bg-success">Optimo</span>
                             @elseif ($insumo->inventario >= 10)
                                 <span class="badge bg-warning text-dark">Moderado</span>
                             @else
-                                <span class="badge bg-danger">¡Desabastecimiento!</span>
+                                <span class="badge bg-danger">Desabastecimiento</span>
                             @endif
                         </td>
                         <td class="text-center">

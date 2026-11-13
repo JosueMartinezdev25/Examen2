@@ -12,7 +12,9 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        //
+        $empleados =Empleados::latest()->paginate(10);
+
+        return view('empleados.index',compact('empleados'));
     }
 
     /**
@@ -20,7 +22,7 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
-        //
+        return view('empleados.create');
     }
 
     /**
@@ -28,7 +30,22 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    $request->validate([
+        'identidad'     => 'required|digits:13|unique:empleados,identidad',
+        'nombre'        => 'required|string|max:255',
+        'apellido'      => 'required|string|max:255',
+        'correo'        => 'required|email|max:255',
+        'cargo'         => 'required|in:Ingeniero Agronomo,Asesor Tecnico de Campo,Jefe de Bodega Central,Operador de Maquinaria,Cajero',
+        'salario'       => 'required|numeric|gt:0',
+        'estado'        => 'required|in:1,0',
+        'fecha_ingreso' => 'required|date',
+        ]);
+
+        Empleado::create($request->all());
+
+        return redirect()
+            ->route('empleados.index')
+            ->with('success', 'Empleado registrado correctamente');
     }
 
     /**
@@ -44,7 +61,7 @@ class EmpleadosController extends Controller
      */
     public function edit(Empleados $empleados)
     {
-        //
+        return view('empleados.edit',compact('empleado'));
     }
 
     /**
@@ -52,7 +69,22 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, Empleados $empleados)
     {
-        //
+    $request->validate([
+        'identidad'     => 'required|digits:13|unique:empleados,identidad' . $empleado->id,
+        'nombre'        => 'required|string|max:255',
+        'apellido'      => 'required|string|max:255',
+        'correo'        => 'required|email|max:255',
+        'cargo'         => 'required|in:Ingeniero Agronomo,Asesor Tecnico de Campo,Jefe de Bodega Central,Operador de Maquinaria,Cajero',
+        'salario'       => 'required|numeric|gt:0',
+        'estado'        => 'required|in:1,0',
+        'fecha_ingreso' => 'required|date',
+        ]);
+
+        $empleados->update($request->all());
+
+        return redirect()
+            ->route('empleados.index')
+            ->with('success', 'Empleado actualizado correctamente');
     }
 
     /**
@@ -60,6 +92,10 @@ class EmpleadosController extends Controller
      */
     public function destroy(Empleados $empleados)
     {
-        //
+        $empleados->delete();
+
+        return redirect()
+            ->route('empleados.index')
+            ->with('success', '¡Empleado registrado exitosamente!');
     }
 }
