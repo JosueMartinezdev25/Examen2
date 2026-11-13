@@ -21,8 +21,11 @@ class AuthController extends Controller
     public function login(Request $request) 
     { 
         $credentials = $request->validate([ 
-            'email'    => 'required|email', 
+            'email'    => 'required|email|ends_with:@agrovalle.hn', 
             'password' => 'required', 
+        ],[
+            'emails.ends:with'=>'Debes usar tu correo institucional'
+
         ]); 
  
         if (Auth::attempt($credentials)) { 

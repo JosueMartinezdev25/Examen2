@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Insumos extends Model
 {
+protected $table = 'insumos';
   protected $fillable = [
         'codigo',
         'nombre',

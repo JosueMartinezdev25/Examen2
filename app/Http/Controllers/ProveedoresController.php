@@ -12,7 +12,10 @@ class ProveedoresController extends Controller
      */
     public function index()
     {
-        //
+        $proveedores = Proveedores::latest()->paginate(10);
+
+        return view('proveedores.index',compact('proveedores'));
+
     }
 
     /**
@@ -20,7 +23,9 @@ class ProveedoresController extends Controller
      */
     public function create()
     {
-        //
+        $proveedores = Proveedores::latest()->paginate(10);
+
+        return view('proveedores.create', compact('proveedores'));
     }
 
     /**
@@ -28,7 +33,22 @@ class ProveedoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $request->validate([
+        'rtn'            => 'required|digits:14|unique:proveedores,rtn',
+        'empresa'        => 'required|string|max:255',
+        'contacto'       => 'required|string|max:255',
+        'telefono'       => 'required|digits:8',
+        'categoria'      => 'required|in:Quimicos,Semilleros,Maquinaria',
+        'limite_credito' => 'required|numeric|min:0',
+        'dias_credito'   => 'required|in:15,30,45,60',
+        'estado'         => 'required|in:1,0',
+        'fecha_registro' => 'required|date',
+        ]);
+        Proveedores::create($request->all());
+
+         return redirect()
+        ->route('proveedores.index')
+        ->with('success','Proveedor añadido');
     }
 
     /**
@@ -44,7 +64,7 @@ class ProveedoresController extends Controller
      */
     public function edit(Proveedores $proveedores)
     {
-        //
+        return view ('proveedores.edit',compact('proveedores'));
     }
 
     /**
@@ -52,14 +72,38 @@ class ProveedoresController extends Controller
      */
     public function update(Request $request, Proveedores $proveedores)
     {
-        //
+        $request->validate([
+        'rtn'            => 'required|digits:14|unique:proveedores,rtn,' . $proveedores->id,
+        'empresa'        => 'required|string|max:255',
+        'contacto'       => 'required|string|max:255',
+        'telefono'       => 'required|digits:8',
+        'categoria'      => 'required|in:Quimicos,Semilleros,Maquinaria',
+        'limite_credito' => 'required|numeric|min:0',
+        'dias_credito'   => 'required|in:15,30,45,60',
+        'estado'         => 'required|in:1,0',
+        'fecha_registro' => 'required|date',
+        ]);
+
+        $proveedores->update($request->all());
+
+        return redirect()
+        ->route('proveedores.index')
+        ->with('success','Proveedor actualizado');
+
+        
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Proveedores $proveedores)
     {
-        //
+        $proveedores->delete();
+
+        
+         return redirect()
+        ->route('proveedores.index')
+        ->with('success','Proveedor eliminado');
     }
 }

@@ -6,8 +6,14 @@ use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\InsumosController;
 use App\Http\Controllers\EmpleadosController;
 
-Route::resource('proveedores', ProveedoresController::class);
-Route::resource('empleados', EmpleadosController::class);
+Route::resource('proveedores', ProveedoresController::class)
+    ->parameters(['proveedores' => 'proveedores']);
+
+
+
+Route::resource('empleados', EmpleadosController::class)
+    ->parameters(['empleados' => 'empleados']);
+
 Route::resource('insumos', InsumosController::class)
     ->parameters(['insumos' => 'insumos']);
  

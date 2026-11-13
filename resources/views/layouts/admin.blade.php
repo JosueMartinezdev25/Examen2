@@ -25,27 +25,31 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                           <div class="sb-sidenav-menu-heading">Gestión</div>
+
+                           <div class="sb-sidenav-menu-heading">Inventario</div>
                         <a class="nav-link" href="{{ route('insumos.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-boxes-stacked"></i></div>
-                            insumos
+                            Catalogo de Insumos
                         </a>
                         <a class="nav-link" href="{{ route('insumos.create') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>
-                            Nuevo Producto
+                            Nuevo Insumo
                         </a>
-                        <div class="sb-sidenav-menu-heading">Personal</div>
+                        <div class="sb-sidenav-menu-heading">Proveedores</div>
+                        <a class="nav-link" href="{{ Route::has('proveedores.index') ? route('proveedores.index') : url('/proveedores') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-industry text-warning"></i></div>
+                            Fabricantes y Proveedores
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Recursos Humanos</div>
                         <a class="nav-link" href="{{ Route::has('empleados.index') ? route('empleados.index') : url('/empleados') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-users text-warning"></i></div>
-                            Recursos Humanos
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Insumos</div>
-                        <a class="nav-link" href="{{ Route::has('insumos.index') ? route('empleados.index') : url('/empleados') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users text-warning"></i></div>
+                            Recursos Humanos y Personal Tecnico
                             
                         </a>
                     </div>
-                    </div>
+                </div>
+
+
                   <div class="sb-sidenav-footer">
                     <div class="small">Conectado como:</div>
                     Administrador

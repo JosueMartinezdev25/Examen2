@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
+            $table->string('rtn', 14)->unique();
+            $table->string('empresa');
+            $table->string('contacto');
+            $table->string('telefono',8);
+            $table->string('categoria');
+            $table->decimal('limite_credito',12,2);
+            $table->integer('dias_credito');
+            $table->integer('estado')->default(1);
+            $table->date('fecha_registro');
             $table->timestamps();
+            
         });
     }
 
