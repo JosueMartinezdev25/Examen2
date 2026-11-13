@@ -15,7 +15,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             
-            <a class="navbar-brand ps-3" href="/productos">Agropecuaria Agrovalle</a>
+            <a class="navbar-brand ps-3" href="/insumos">Agropecuaria Agrovalle</a>
             
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             
@@ -26,11 +26,11 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                            <div class="sb-sidenav-menu-heading">Gestión</div>
-                        <a class="nav-link" href="{{ route('productos.index') }}">
+                        <a class="nav-link" href="{{ route('insumos.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-boxes-stacked"></i></div>
-                            Productos
+                            insumos
                         </a>
-                        <a class="nav-link" href="{{ route('productos.create') }}">
+                        <a class="nav-link" href="{{ route('insumos.create') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>
                             Nuevo Producto
                         </a>

@@ -12,7 +12,7 @@ class AuthController extends Controller
     public function showLogin() 
     { 
         if (Auth::check()) { 
-            return redirect()->route('productos.index'); 
+            return redirect()->route('insumos.index'); 
         } 
         return view('auth.login'); 
     } 
@@ -28,7 +28,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) { 
             $request->session()->regenerate(); 
  
-            return redirect()->intended(route('productos.index')) 
+            return redirect()->intended(route('insumos.index')) 
                              ->with('success', 'Bienvenido, ' . Auth::user()->name); 
         } 
  
@@ -40,7 +40,7 @@ class AuthController extends Controller
     public function showRegister() 
     { 
         if (Auth::check()) { 
-            return redirect()->route('productos.index'); 
+            return redirect()->route('insumos.index'); 
         } 
         return view('auth.register'); 
     } 
@@ -61,7 +61,7 @@ class AuthController extends Controller
  
         Auth::login($user); 
  
-        return redirect()->route('productos.index') 
+        return redirect()->route('insumos.index') 
                          ->with('success', '¡Cuenta creada con éxito!'); 
     } 
  
